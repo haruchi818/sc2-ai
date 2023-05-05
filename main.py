@@ -6,6 +6,7 @@ from sc2.constants import *
 
 agent = TerranAgent()
 
+
 run_game(maps.get("Abyssal Reef LE"), [
     Bot(Race.Terran, agent),
     Computer(Race.Zerg, Difficulty.Medium)
