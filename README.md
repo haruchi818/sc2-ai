@@ -1,5 +1,3 @@
-Sure, here's an example README.md file and some test files that you can use as a starting point for your PySC2 bot:
-
 ## PySC2 Bot
 
 This is a PySC2 bot that uses the `sc2` library to play StarCraft II. The bot is written in Python and uses the `TerranAgent` class to control a Terran race army.
