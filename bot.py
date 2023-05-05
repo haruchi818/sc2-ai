@@ -31,6 +31,20 @@ class TerranAgent(BotAI):
         # Expand the base if needed
         if self.units(UnitTypeId.COMMANDCENTER).amount < 2 and self.can_afford(UnitTypeId.COMMANDCENTER):
             await self.expand_now()
+    async def build_barracks(self):
+        if self.can_afford(UnitTypeId.BARRACKS) and not self.already_pending(UnitTypeId.BARRACKS):
+            if self.units(UnitTypeId.SUPPLYDEPOT).ready.exists:
+                if self.units(UnitTypeId.BARRACKS).amount < 2:
+                    position = self.units(UnitTypeId.SUPPLYDEPOT).random.position
+                    await self.build(UnitTypeId.BARRACKS, near=position)
+    async def train_marines(self):
+        for barracks in self.units(UnitTypeId.BARRACKS).ready.noqueue:
+            if self.can_afford(UnitTypeId.MARINE):
+                await self.do(barracks.train(UnitTypeId.MARINE))
+    def units(self, unit_type):
+        return self.observation.player_common.minerals, self.observation.player_common.vespene, self.units(unit_type)
+
+
 
 
 # class TerranAgent(BotAI):
