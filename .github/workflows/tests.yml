@@ -1,6 +1,6 @@
 name: PySC2 Bot Tests
 
-on: [pull_request]
+on: [push]
 
 jobs:
   test:
